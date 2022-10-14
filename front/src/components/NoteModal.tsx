@@ -5,11 +5,11 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 type NoteModalProps = {
-  id?: string,
-  name?: string,
-  content?: string,
-  open?: boolean,
-}
+  id?: string;
+  name?: string;
+  content?: string;
+  open?: boolean;
+};
 
 const NoteModal: FC<NoteModalProps> = ({ id, name, content, open }) => {
   const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
