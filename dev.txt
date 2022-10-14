@@ -1,0 +1,10 @@
+Front:
+- List of notes
+- Crud operations on notes
+- Header
+    - Open login modal
+    - Logout button
+
+Backend
+-Mongo Atlas DB
+-JWT Login
