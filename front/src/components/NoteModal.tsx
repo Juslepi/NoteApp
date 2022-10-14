@@ -4,13 +4,13 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
 const NoteModal = () => {
-  const submitNote = (e) => {
+  const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     throw new Error("Not implemented");
   };
 
-  const deleteNote = (e) => {
+  const deleteNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     throw new Error("Not implemented");
   };
 
