@@ -2,15 +2,15 @@ import { useState } from "react";
 import Container from "react-bootstrap/Container";
 
 import Note from "./Note";
-import { NoteProps as INote } from "./Note";
+import { INote } from "./Note";
 import NoteModal from "./NoteModal";
 
 const NoteContainer = () => {
   const [activeNote, setActiveNote] = useState<INote>();
 
-  const onClickNote = (e: any) => {
-    // setActiveNote(note);
-    console.log("vaikee");
+  const onClickNote = (e: any, note: INote) => {
+    setActiveNote(note);
+    console.log(activeNote);
   };
 
   const notes = [
