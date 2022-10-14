@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -27,7 +27,7 @@ const LoginModal = () => {
               placeholder="Email"
               value={formDetails.email}
               autoFocus
-              onChange={(e) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setformDetails({ ...formDetails, email: e.target.value })
               }
             />
@@ -39,7 +39,7 @@ const LoginModal = () => {
               type="password"
               placeholder="password"
               value={formDetails.password}
-              onChange={(e) =>
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                 setformDetails({ ...formDetails, password: e.target.value })
               }
             ></Form.Control>
