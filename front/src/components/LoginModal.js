@@ -14,7 +14,7 @@ const LoginModal = () => {
   }
 
   return (
-    <Modal show={true}>
+    <Modal show={true} centered>
       <Modal.Header closeButton>
         <Modal.Title>Log In</Modal.Title>
       </Modal.Header>
@@ -26,6 +26,7 @@ const LoginModal = () => {
               type="email"
               placeholder="Email"
               value={formDetails.email}
+              autoFocus
               onChange={(e) =>
                 setformDetails({ ...formDetails, email: e.target.value })
               }
