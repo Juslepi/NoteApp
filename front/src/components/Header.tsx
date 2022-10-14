@@ -1,18 +1,14 @@
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-const Header = () => {
+const Header: React.FC = () => {
   return (
     <>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Notes</Navbar.Brand>
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              <Nav.Link href="#login">Login</Nav.Link>
-            </Navbar.Text>
-          </Navbar.Collapse>
+      <Navbar bg="dark" variant="dark" className="mx-10">
+        <Container fluid>
+          <Navbar.Brand href="#home">Note</Navbar.Brand>
+          <Button variant="dark">Login</Button>
         </Container>
       </Navbar>
     </>
