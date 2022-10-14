@@ -1,9 +1,17 @@
+import { FC } from "react";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container"
+import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const NoteModal = () => {
+type NoteModalProps = {
+  id?: string,
+  name?: string,
+  content?: string,
+  open?: boolean,
+}
+
+const NoteModal: FC<NoteModalProps> = ({ id, name, content, open }) => {
   const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
@@ -15,7 +23,7 @@ const NoteModal = () => {
   };
 
   return (
-    <Modal>
+    <Modal show={open}>
       <Modal.Body color="warning">
         <Form className="">
           <Form.Control as="textarea" rows={12} className="mb-3"></Form.Control>
