@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -11,6 +11,8 @@ type NoteModalProps = {
 };
 
 const NoteModal: FC<NoteModalProps> = ({ note, open }) => {
+  const [activeNote, setActiveNote] = useState<INote>()
+  
   const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
@@ -23,8 +25,11 @@ const NoteModal: FC<NoteModalProps> = ({ note, open }) => {
 
   return (
     <Modal show={open}>
+      <Modal.Header>
+        <Button onClick={() => console.log("Shut DOWN")}>X</Button>
+      </Modal.Header>
       <Modal.Body color="warning">
-        <Form className="">
+        <Form >
           <Form.Control as="textarea" rows={12} className="mb-3"></Form.Control>
           {/* Buttons */}
           <Container className="d-flex justify-content-between">

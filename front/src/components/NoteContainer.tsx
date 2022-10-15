@@ -7,10 +7,11 @@ import NoteModal from "./NoteModal";
 
 const NoteContainer = () => {
   const [activeNote, setActiveNote] = useState<INote>();
+  const [editModalOpen, setEditModalOpen] = useState(false);
 
   const onClickNote = (e: any, note: INote) => {
     setActiveNote(note);
-    console.log(activeNote);
+    setEditModalOpen(true)
   };
 
   const notes = [
@@ -51,7 +52,7 @@ const NoteContainer = () => {
           onClickNote={onClickNote}
         />
       ))}
-      <NoteModal />
+      {/* <NoteModal open={editModalOpen}/> */}
     </Container>
   );
 };
