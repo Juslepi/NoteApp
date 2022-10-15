@@ -21,13 +21,8 @@ const NoteContainer = () => {
 
   const onSaveNote = (e: any, note: INote) => {
     e.preventDefault();
-    console.log(note.id);
 
-    const noteToUpdate = notes.find((n) => n.id === note.id);
-
-    if (noteToUpdate !== undefined) {
-      noteToUpdate.name = note.name;
-    }
+    throw new Error("Not implemented")
   };
 
   const onDeleteNote = (e: any, note: INote) => {
