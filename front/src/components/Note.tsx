@@ -2,7 +2,7 @@ import { FC } from "react";
 import Container from "react-bootstrap/Container";
 
 export interface INote {
-  name?: string;
+  name: string;
   content: string;
   id: string;
 }

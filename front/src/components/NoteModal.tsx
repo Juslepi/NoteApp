@@ -7,31 +7,24 @@ import { INote } from "./Note";
 
 type NoteModalProps = {
   note: INote;
-  modalOpen?: boolean;
+  modalOpen: boolean;
   closeModal: () => void;
+  saveNote: (e: any, note: INote) => void;
+  deleteNote: (e: any, note: INote) => void;
 };
 
 const NoteModal: FC<NoteModalProps> = ({
   note,
   modalOpen: open,
   closeModal,
+  saveNote,
+  deleteNote,
 }) => {
-  
   useEffect(() => {
     setActiveNote(note);
   }, [note]);
 
   const [activeNote, setActiveNote] = useState<INote>({} as INote);
-
-  const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    throw new Error("Not implemented");
-  };
-
-  const deleteNote = (e: React.MouseEvent<HTMLButtonElement>) => {
-    throw new Error("Not implemented");
-  };
 
   return (
     <Modal show={open}>
@@ -57,11 +50,11 @@ const NoteModal: FC<NoteModalProps> = ({
           ></Form.Control>
           {/* Buttons */}
           <Container className="d-flex justify-content-between">
-            <Button variant="danger" onClick={deleteNote}>
+            <Button variant="danger" onClick={(e) => deleteNote(e, activeNote)}>
               Delete
             </Button>
-            <Button type="submit" onClick={submitNote}>
-              Save Note
+            <Button onClick={(e) => saveNote(e, activeNote)}>
+              Save Note 
             </Button>
           </Container>
         </Form>

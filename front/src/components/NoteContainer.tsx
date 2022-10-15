@@ -5,12 +5,11 @@ import Note from "./Note";
 import { INote } from "./Note";
 import NoteModal from "./NoteModal";
 
-
 const NoteContainer = () => {
   const [activeNote, setActiveNote] = useState<INote>({} as INote);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  const onClickNote = (e: any, note: INote) => {    
+  const onClickNote = (e: any, note: INote) => {
     setActiveNote(note);
     setEditModalOpen(true);
   };
@@ -18,6 +17,22 @@ const NoteContainer = () => {
   const closeEditModal = () => {
     setActiveNote({} as INote);
     setEditModalOpen(false);
+  };
+
+  const onSaveNote = (e: any, note: INote) => {
+    e.preventDefault();
+    console.log(note.id);
+
+    const noteToUpdate = notes.find((n) => n.id === note.id);
+
+    if (noteToUpdate !== undefined) {
+      noteToUpdate.name = note.name;
+    }
+  };
+
+  const onDeleteNote = (e: any, note: INote) => {
+    e.preventDefault();
+    throw new Error("Not implemented");
   };
 
   const notes = [
@@ -51,7 +66,13 @@ const NoteContainer = () => {
   ];
   return (
     <Container className="d-flex flex-wrap" role="button">
-      <NoteModal note={activeNote} modalOpen={editModalOpen} closeModal={closeEditModal} />
+      <NoteModal
+        note={activeNote}
+        modalOpen={editModalOpen}
+        closeModal={closeEditModal}
+        saveNote={onSaveNote}
+        deleteNote={onDeleteNote}
+      />
       {notes.map((note) => (
         <Note key={note.id} note={note} onClickNote={onClickNote} />
       ))}
