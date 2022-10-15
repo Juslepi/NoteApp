@@ -5,11 +5,12 @@ import Note from "./Note";
 import { INote } from "./Note";
 import NoteModal from "./NoteModal";
 
+
 const NoteContainer = () => {
-  const [activeNote, setActiveNote] = useState<INote>();
+  const [activeNote, setActiveNote] = useState<INote>({} as INote);
   const [editModalOpen, setEditModalOpen] = useState(false);
 
-  const onClickNote = (e: any, note: INote) => {
+  const onClickNote = (e: any, note: INote) => {    
     setActiveNote(note);
     setEditModalOpen(true);
   };
@@ -50,7 +51,7 @@ const NoteContainer = () => {
   ];
   return (
     <Container className="d-flex flex-wrap" role="button">
-      <NoteModal modalOpen={editModalOpen} closeModal={closeEditModal} />
+      <NoteModal note={activeNote} modalOpen={editModalOpen} closeModal={closeEditModal} />
       {notes.map((note) => (
         <Note key={note.id} note={note} onClickNote={onClickNote} />
       ))}

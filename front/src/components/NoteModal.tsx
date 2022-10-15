@@ -1,19 +1,28 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { INote } from "./Note"
+import { INote } from "./Note";
 
 type NoteModalProps = {
-  note?: INote,
+  note: INote;
   modalOpen?: boolean;
   closeModal: () => void;
 };
 
-const NoteModal: FC<NoteModalProps> = ({ note, modalOpen: open, closeModal }) => {
-  const [activeNote, setActiveNote] = useState<INote>()
+const NoteModal: FC<NoteModalProps> = ({
+  note,
+  modalOpen: open,
+  closeModal,
+}) => {
   
+  useEffect(() => {
+    setActiveNote(note);
+  }, [note]);
+
+  const [activeNote, setActiveNote] = useState<INote>({} as INote);
+
   const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
@@ -27,11 +36,25 @@ const NoteModal: FC<NoteModalProps> = ({ note, modalOpen: open, closeModal }) =>
   return (
     <Modal show={open}>
       <Modal.Header>
+        <Form.Control
+          value={activeNote.name}
+          onChange={(e) =>
+            setActiveNote({ ...activeNote, name: e.target.value })
+          }
+        ></Form.Control>
         <Button onClick={closeModal}>X</Button>
       </Modal.Header>
       <Modal.Body color="warning">
-        <Form >
-          <Form.Control as="textarea" rows={12} className="mb-3"></Form.Control>
+        <Form>
+          <Form.Control
+            as="textarea"
+            value={activeNote.content}
+            onChange={(e) =>
+              setActiveNote({ ...activeNote, content: e.target.value })
+            }
+            rows={12}
+            className="mb-3"
+          ></Form.Control>
           {/* Buttons */}
           <Container className="d-flex justify-content-between">
             <Button variant="danger" onClick={deleteNote}>
