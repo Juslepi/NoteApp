@@ -7,10 +7,11 @@ import { INote } from "./Note"
 
 type NoteModalProps = {
   note?: INote,
-  open?: boolean;
+  modalOpen?: boolean;
+  closeModal: () => void;
 };
 
-const NoteModal: FC<NoteModalProps> = ({ note, open }) => {
+const NoteModal: FC<NoteModalProps> = ({ note, modalOpen: open, closeModal }) => {
   const [activeNote, setActiveNote] = useState<INote>()
   
   const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -26,7 +27,7 @@ const NoteModal: FC<NoteModalProps> = ({ note, open }) => {
   return (
     <Modal show={open}>
       <Modal.Header>
-        <Button onClick={() => console.log("Shut DOWN")}>X</Button>
+        <Button onClick={closeModal}>X</Button>
       </Modal.Header>
       <Modal.Body color="warning">
         <Form >

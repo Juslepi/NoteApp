@@ -11,7 +11,12 @@ const NoteContainer = () => {
 
   const onClickNote = (e: any, note: INote) => {
     setActiveNote(note);
-    setEditModalOpen(true)
+    setEditModalOpen(true);
+  };
+
+  const closeEditModal = () => {
+    setActiveNote({} as INote);
+    setEditModalOpen(false);
   };
 
   const notes = [
@@ -45,14 +50,10 @@ const NoteContainer = () => {
   ];
   return (
     <Container className="d-flex flex-wrap" role="button">
+      <NoteModal modalOpen={editModalOpen} closeModal={closeEditModal} />
       {notes.map((note) => (
-        <Note
-          key={note.id}
-          note={note}
-          onClickNote={onClickNote}
-        />
+        <Note key={note.id} note={note} onClickNote={onClickNote} />
       ))}
-      {/* <NoteModal open={editModalOpen}/> */}
     </Container>
   );
 };
