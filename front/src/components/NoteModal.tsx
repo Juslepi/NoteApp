@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
+import CloseButton from "react-bootstrap/esm/CloseButton";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -35,7 +36,7 @@ const NoteModal: FC<NoteModalProps> = ({
             setActiveNote({ ...activeNote, name: e.target.value })
           }
         ></Form.Control>
-        <Button onClick={closeModal}>X</Button>
+        <CloseButton onClick={closeModal}/>
       </Modal.Header>
       <Modal.Body color="warning">
         <Form>

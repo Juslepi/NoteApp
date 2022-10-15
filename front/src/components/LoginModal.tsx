@@ -1,22 +1,29 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import Button from "react-bootstrap/Button";
+import { CloseButton } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-const LoginModal = () => {
+type LoginModalProps = {
+  modalOpen: boolean;
+  setLoginModalOpen: (bool: boolean) => void;
+};
+
+const LoginModal: FC<LoginModalProps> = ({ modalOpen, setLoginModalOpen }) => {
   const [formDetails, setformDetails] = useState({
     email: "",
     password: "",
   });
 
   const submit = () => {
-    throw new Error("Not implemented")
-  }
+    throw new Error("Not implemented");
+  };
 
   return (
-    <Modal show={true} centered>
-      <Modal.Header closeButton>
+    <Modal show={modalOpen} centered>
+      <Modal.Header >
         <Modal.Title>Log In</Modal.Title>
+        <CloseButton onClick={() => setLoginModalOpen(false)}/>
       </Modal.Header>
       <Modal.Body>
         <Form>

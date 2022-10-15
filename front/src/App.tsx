@@ -4,13 +4,17 @@ import LoginModal from "./components/LoginModal";
 import NoteContainer from "./components/NoteContainer";
 
 function App() {
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <div className="App">
-      <Header />
+      <Header setLoginModalOpen={setLoginModalOpen} />
       <NoteContainer />
-      {loggedIn ? <LoginModal /> : null}
+      <LoginModal
+        modalOpen={loginModalOpen}
+        setLoginModalOpen={setLoginModalOpen}
+      />
     </div>
   );
 }
