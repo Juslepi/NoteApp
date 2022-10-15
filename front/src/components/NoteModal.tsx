@@ -3,15 +3,14 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { INote } from "./Note"
 
 type NoteModalProps = {
-  id?: string;
-  name?: string;
-  content?: string;
+  note?: INote,
   open?: boolean;
 };
 
-const NoteModal: FC<NoteModalProps> = ({ id, name, content, open }) => {
+const NoteModal: FC<NoteModalProps> = ({ note, open }) => {
   const submitNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
