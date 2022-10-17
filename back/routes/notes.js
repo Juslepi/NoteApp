@@ -44,15 +44,13 @@ router.post("/", async (req, res) => {
 // Update note
 router.put("/", async (req, res) => {
     const { id, name, content } = req.body.data;
-
-    console.log(name);
-
     try {
         const updatedNote = await noteModel.findOneAndUpdate(
             { _id: id },
             { name, content },
             { new: true }
         );
+
         res.status(201).send(updatedNote);
     } catch (e) {
         res.status(400).send(e.message);
@@ -61,7 +59,7 @@ router.put("/", async (req, res) => {
 // Delete note
 router.delete("/", async (req, res) => {
     const { id } = req.body;
-    
+
     try {
         const note = await noteModel.findOneAndDelete({ _id: id });
 
