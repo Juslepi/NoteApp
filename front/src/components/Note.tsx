@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 export interface INote {
   name: string;
   content: string;
-  id: string;
+  _id: string;
 }
 
 export type NoteProps = {
