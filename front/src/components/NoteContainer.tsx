@@ -14,9 +14,7 @@ const NoteContainer = () => {
 
     useEffect(() => {
         Axios.get(apiPrefix + "note").then((res) => setNotes(res.data));
-    }, []);
-
-    console.log(notes);
+    }, [notes]);
 
     const onClickNote = (e: any, note: INote) => {
         setActiveNote(note);
@@ -36,7 +34,18 @@ const NoteContainer = () => {
 
     const onDeleteNote = (e: any, note: INote) => {
         e.preventDefault();
-        throw new Error("Not implemented");
+
+        try {
+            Axios.delete(apiPrefix + "note", { data: { id: activeNote._id } });
+            const newNotes = notes.filter(
+                (n: INote) => n._id !== activeNote._id
+            );
+            setNotes(newNotes);
+            setActiveNote({} as INote);
+            setEditModalOpen(false);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     return (
