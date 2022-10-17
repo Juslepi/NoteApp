@@ -29,10 +29,21 @@ const NoteContainer = () => {
     const onSaveNote = (e: any, note: INote) => {
         e.preventDefault();
 
-        throw new Error("Not implemented");
+        try {
+            Axios.put(apiPrefix + "note", {
+                data: {
+                    id: note._id,
+                    name: note.name,
+                    content: note.content,
+                },
+            });
+            setActiveNote(note);
+        } catch (e) {
+            console.log(e);
+        }
     };
 
-    const onDeleteNote = (e: any, note: INote) => {
+    const onDeleteNote = (e: any) => {
         e.preventDefault();
 
         try {
