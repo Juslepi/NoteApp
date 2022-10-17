@@ -66,11 +66,12 @@ router.delete("/", async (req, res) => {
 
         if (note !== null && note !== undefined) {
             res.status(201).send(`Deleted note ${id}`);
+        } else {
+            throw new mongoose.Error.DocumentNotFoundError(id);
         }
-
-        throw new mongoose.Error.DocumentNotFoundError(id);
+        
     } catch (e) {
-        res.status(400).json(e.message);
+        res.status(400).send(e.message)
     }
 });
 
