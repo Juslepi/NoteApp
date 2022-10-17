@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Button from "react-bootstrap/Button";
 import Axios from "axios";
 import Container from "react-bootstrap/Container";
 import Note from "./Note";
@@ -38,6 +39,8 @@ const NoteContainer = () => {
                 },
             });
             setActiveNote(note);
+            setActiveNote({} as INote);
+            setEditModalOpen(false);
         } catch (e) {
             console.log(e);
         }
@@ -46,6 +49,7 @@ const NoteContainer = () => {
     const onDeleteNote = (e: any) => {
         e.preventDefault();
 
+        console.log("??");
         try {
             Axios.delete(apiPrefix + "note", { data: { id: activeNote._id } });
             const newNotes = notes.filter(
@@ -71,6 +75,18 @@ const NoteContainer = () => {
             {notes.map((note: INote) => (
                 <Note key={note._id} note={note} onClickNote={onClickNote} />
             ))}
+            <Button
+                style={{
+                    position: "absolute",
+                    right: "50px",
+                    bottom: "50px",
+                    borderRadius: "14px",
+                }}
+                variant="outline-dark"
+                size="sm"
+            >
+                Add Note
+            </Button>
         </Container>
     );
 };
