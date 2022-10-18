@@ -91,9 +91,9 @@ const NoteContainer = () => {
             ))}
             <Button
                 style={{
-                    position: "absolute",
+                    position: "fixed",
                     right: "50px",
-                    bottom: "50px",
+                    bottom: "25px",
                     borderRadius: "14px",
                 }}
                 variant="outline-dark"
