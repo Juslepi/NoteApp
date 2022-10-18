@@ -38,11 +38,11 @@ const NoteContainer = () => {
                     name: note.name,
                     content: note.content,
                 },
-            }).then((res) => console.log(res))
-            
+            }).then((res) => console.log(res));
+
             setActiveNote({} as INote);
             setEditModalOpen(false);
-            return
+            return;
         }
 
         try {
