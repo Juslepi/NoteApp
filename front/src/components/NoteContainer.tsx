@@ -31,14 +31,12 @@ const NoteContainer = () => {
         e.preventDefault();
 
         if (note._id === undefined) {
-            console.log(note);
-
             Axios.post(apiPrefix + "note", {
                 data: {
                     name: note.name,
                     content: note.content,
                 },
-            }).then((res) => console.log(res));
+            });
 
             setActiveNote({} as INote);
             setEditModalOpen(false);
