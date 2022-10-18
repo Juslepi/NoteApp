@@ -30,6 +30,21 @@ const NoteContainer = () => {
     const onSaveNote = (e: any, note: INote) => {
         e.preventDefault();
 
+        if (note._id === undefined) {
+            console.log(note);
+
+            Axios.post(apiPrefix + "note", {
+                data: {
+                    name: note.name,
+                    content: note.content,
+                },
+            }).then((res) => console.log(res))
+            
+            setActiveNote({} as INote);
+            setEditModalOpen(false);
+            return
+        }
+
         try {
             Axios.put(apiPrefix + "note", {
                 data: {
@@ -38,7 +53,7 @@ const NoteContainer = () => {
                     content: note.content,
                 },
             });
-            setActiveNote(note);
+
             setActiveNote({} as INote);
             setEditModalOpen(false);
         } catch (e) {
@@ -84,8 +99,8 @@ const NoteContainer = () => {
                 variant="outline-dark"
                 size="sm"
                 onClick={() => {
-                  setEditModalOpen(true)}
-                }
+                    setEditModalOpen(true);
+                }}
             >
                 Add Note
             </Button>

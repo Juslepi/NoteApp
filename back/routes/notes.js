@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 
 // Post note
 router.post("/", async (req, res) => {
-    const { name, content } = req.body;
+    const { name, content } = req.body.data;
     const dateNow = date.format(new Date(), "DD-MM-YYYY");
 
     try {
