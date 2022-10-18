@@ -49,7 +49,6 @@ const NoteContainer = () => {
     const onDeleteNote = (e: any) => {
         e.preventDefault();
 
-        console.log("??");
         try {
             Axios.delete(apiPrefix + "note", { data: { id: activeNote._id } });
             const newNotes = notes.filter(
@@ -84,6 +83,9 @@ const NoteContainer = () => {
                 }}
                 variant="outline-dark"
                 size="sm"
+                onClick={() => {
+                  setEditModalOpen(true)}
+                }
             >
                 Add Note
             </Button>
