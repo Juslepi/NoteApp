@@ -3,3 +3,8 @@ node_modules
 .env
 
 todos.txt
+dev.txt
+
+front/.firebase/
+front/.firebaserc
+front/firebase.json
