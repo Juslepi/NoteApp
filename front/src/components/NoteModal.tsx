@@ -10,8 +10,8 @@ type NoteModalProps = {
   note: INote;
   modalOpen: boolean;
   closeModal: () => void;
-  saveNote: (e: any, note: INote) => void;
-  deleteNote: (e: any, note: INote) => void;
+  saveNote: (e: React.MouseEvent<HTMLElement>, note: INote) => void;
+  deleteNote: (e: React.MouseEvent<HTMLElement>, note: INote) => void;
 };
 
 const NoteModal: FC<NoteModalProps> = ({
@@ -21,11 +21,11 @@ const NoteModal: FC<NoteModalProps> = ({
   saveNote,
   deleteNote,
 }) => {
+  const [activeNote, setActiveNote] = useState<INote>({} as INote);
+
   useEffect(() => {
     setActiveNote(note);
   }, [note]);
-
-  const [activeNote, setActiveNote] = useState<INote>({} as INote);
 
   return (
     <Modal show={open}>
@@ -36,7 +36,7 @@ const NoteModal: FC<NoteModalProps> = ({
             setActiveNote({ ...activeNote, name: e.target.value })
           }
         ></Form.Control>
-        <CloseButton onClick={closeModal}/>
+        <CloseButton onClick={closeModal} />
       </Modal.Header>
       <Modal.Body color="warning">
         <Form>
@@ -54,9 +54,7 @@ const NoteModal: FC<NoteModalProps> = ({
             <Button variant="danger" onClick={(e) => deleteNote(e, activeNote)}>
               Delete
             </Button>
-            <Button onClick={(e) => saveNote(e, activeNote)}>
-              Save Note 
-            </Button>
+            <Button onClick={(e) => saveNote(e, activeNote)}>Save Note</Button>
           </Container>
         </Form>
       </Modal.Body>
