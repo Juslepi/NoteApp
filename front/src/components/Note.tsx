@@ -9,7 +9,7 @@ export interface INote {
 
 export type NoteProps = {
     note: INote;
-    onClickNote: (e: any, note: INote) => void;
+    onClickNote: (e: React.MouseEvent<HTMLElement>, note: INote) => void;
 };
 
 const Note: FC<NoteProps> = ({ note, onClickNote }) => {
