@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 
 type LoginModalProps = {
   modalOpen: boolean;
-  setLoginModalOpen: (bool: boolean) => void;
+  setLoginModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const LoginModal: FC<LoginModalProps> = ({ modalOpen, setLoginModalOpen }) => {
